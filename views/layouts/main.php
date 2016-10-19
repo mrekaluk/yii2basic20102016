@@ -32,9 +32,13 @@ AppAsset::register($this);
                 'brandLabel' => '<span class="glyphicon glyphicon-heart"> </span> HPC 3',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'navbar-inverse',// navbar-fixed-top',
+                    'class' => 'navbar-inverse', // navbar-fixed-top',
                 ],
             ]);
+            $setting = [
+            ['label' => 'สถานะคอมพิวเตอร์', 'url' => ['/comstatus']],
+            ['label' => 'xxxxxxx', 'url' => ['/site/report2']]
+            ];
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'encodeLabels' => false,
@@ -42,7 +46,8 @@ AppAsset::register($this);
                         ['label' => '<span class="glyphicon glyphicon-home"> </span> หน้าแรก', 'url' => ['/site/index']],
                         ['label' => '<span class="glyphicon glyphicon-envelope"> </span> เกี่ยวกับ', 'url' => ['/site/about']],
                         ['label' => '<span class="glyphicon glyphicon-list-alt"> </span> ติดต่อ', 'url' => ['/site/contact']],
-                    ['label' => '<span class="glyphicon glyphicon-list-alt"> </span> ทดสอบ1', 'url' => ['/first1/index']],
+                        ['label' => '<span class="glyphicon glyphicon-ok"> </span> ทดสอบ1', 'url' => ['/first1/index']],
+                        ['label' => '<span class="glyphicon glyphicon-cog"> </span> ตั้งค่าระบบ', 'items' => $setting],
                     Yii::$app->user->isGuest ? (
                                 ['label' => 'Login', 'url' => ['/site/login']]
                             ) : (
@@ -60,11 +65,11 @@ AppAsset::register($this);
             ?>
 
             <div class="container">
-<?=
-Breadcrumbs::widget([
-    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-])
-?>
+                <?=
+                Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ])
+                ?>
                 <?= $content ?>
             </div>
         </div>
