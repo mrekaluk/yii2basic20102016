@@ -36,17 +36,28 @@ AppAsset::register($this);
                 ],
             ]);
             $setting = [
-            ['label' => 'สถานะคอมพิวเตอร์', 'url' => ['/comstatus']],
-            ['label' => 'xxxxxxx', 'url' => ['/site/report2']]
+                    ['label' => 'สถานะคอมพิวเตอร์', 'url' => ['/comstatus']],
+                    ['label' => 'ประเภทคอมพิวเตอร์', 'url' => ['/comtype']]
             ];
+
+            $register = [
+                    ['label' => 'ทะเบียนคอมพิวเตอร์', 'url' => ['/com']],
+            ];
+
+            $report = [
+                    ['label' => 'รายงานประเภทคอมพิวเตอร์', 'url' => ['/reportcomtype']],
+                    ['label' => 'รายงานปัญหาคอมพิวเตอร์', 'url' => ['/reportcomservice']],
+                    ['label' => 'กราฟสรุปจำนวนคอมพิวเตอร์', 'url' => ['/chartcom']],
+            ];
+
+
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'encodeLabels' => false,
                 'items' => [
                         ['label' => '<span class="glyphicon glyphicon-home"> </span> หน้าแรก', 'url' => ['/site/index']],
-                        ['label' => '<span class="glyphicon glyphicon-envelope"> </span> เกี่ยวกับ', 'url' => ['/site/about']],
-                        ['label' => '<span class="glyphicon glyphicon-list-alt"> </span> ติดต่อ', 'url' => ['/site/contact']],
-                        ['label' => '<span class="glyphicon glyphicon-ok"> </span> ทดสอบ1', 'url' => ['/first1/index']],
+                        ['label' => '<span class="glyphicon glyphicon-cog"> </span> ทะเบียนคอม', 'items' => $register],
+                        ['label' => '<span class="glyphicon glyphicon-cog"> </span> ระบบรายงาน', 'items' => $report],
                         ['label' => '<span class="glyphicon glyphicon-cog"> </span> ตั้งค่าระบบ', 'items' => $setting],
                     Yii::$app->user->isGuest ? (
                                 ['label' => 'Login', 'url' => ['/site/login']]
